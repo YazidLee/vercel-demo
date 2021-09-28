@@ -1,7 +1,7 @@
 const axios = require('axios') // 发送 REST 请求
 
 module.exports = (req, res) => {
-    const result = {}
+    let result = {}
     try {
         console.time("QQ-Avatar")
         console.log("开始获取头像")
