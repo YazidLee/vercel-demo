@@ -10,8 +10,5 @@ module.exports = (req, res) => {
     } catch(e) {
         console.error('获取 QQ 头像失败：', e)
     }
-    return res.json({
-        status: "success",
-        result: "0",
-    })
+    res.status(200).json(result)
 }
