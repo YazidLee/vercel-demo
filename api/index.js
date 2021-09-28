@@ -2,7 +2,9 @@ const axios = require('axios') // 发送 REST 请求
 
 module.exports = async (req, res) => {
     let result = {}
+    console.time("QQAvatar")
     result = await getQQAvatar("302834972@qq.com")
+    console.timeEnd("QQAvatar")
     res.status(200).json(result)
 }
 
