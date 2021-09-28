@@ -1,6 +1,6 @@
 const axios = require('axios') // 发送 REST 请求
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
     let result = {}
     result = await getQQAvatar("302834972@qq.com")
     res.status(200).json(result)
