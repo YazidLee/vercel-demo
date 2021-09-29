@@ -1,16 +1,18 @@
 {
-    "name": "vercel-demo",
-    "version": "0.0.1",
-    "description": "",
-    "author": "",
-    "license": "MIT",
-    "main": "api/index.js",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/YazidLee/vercel-demo.git"
-    },
-    "homepage": "",
-    "dependencies": {
-      "axios": "^0.21.1"
-    }
+  "name": "vercel-demo",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "main": "api/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YazidLee/vercel-demo.git"
+  },
+  "homepage": "",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "mongodb": "^3.6.3",
+    "nodemailer": "^6.4.17"
   }
+}

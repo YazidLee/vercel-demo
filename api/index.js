@@ -1,11 +1,19 @@
 const axios = require('axios') // 发送 REST 请求
+// Import the dependency.
+const clientPromise = require('./mongo');
 
 module.exports = async (req, res) => {
-    let result = {}
-    console.time("QQAvatar")
-    result = await getQQAvatar("302834972@qq.com")
-    console.timeEnd("QQAvatar")
-    res.status(200).json(result)
+    // let result = {}
+    // console.time("QQAvatar")
+    // result = await getQQAvatar("302834972@qq.com")
+    // console.timeEnd("QQAvatar")
+    // res.status(200).json(result)
+
+    // Get the MongoClient by calling await on the promise.
+    // Because it is a promise, it will only resolve once.
+    const client = await clientPromise;
+    // Use the client to return the name of the connected database.
+    res.status(200).json({ dbName: client.db().databaseName });
 }
 
 async function getQQAvatar (qq) {
