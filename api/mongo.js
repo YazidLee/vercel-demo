@@ -11,11 +11,12 @@ if (process.env.VERCEL_ENV === "development") {
   // In development mode, use a global variable so that the value
   // is preserved across module reloads caused by HMR (hot module replacement).
    if (!global._mongoClientPromise) {
+      console.log("New connection")
       client = new MongoClient(uri, options);
       global._mongoClientPromise = client.connect();
-   } else {
-       console.log("Using connection cache")
+      console.log("Set connection cache")
    }
+   console.log("Using connection cache")
    clientPromise = global._mongoClientPromise;
 } else {
   // In production mode, it's best to not use a global variable.
