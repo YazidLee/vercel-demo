@@ -62,7 +62,10 @@ module.exports = async (requestArg, responseArg) => {
   try {
     anonymousSignIn()
     await connectToDatabase(process.env.MONGODB_URI)
+    console.time('读取配置：')
     await readConfig()
+    console.timeEnd('读取配置：')
+    console.log('当前配置为：', config)
     allowCors()
     if (request.method === 'OPTIONS') {
       response.status(204).end()
@@ -972,6 +975,7 @@ async function noticeMaster (comment) {
       </div>`
   }
   let sendResult
+  console.time("发送博主邮件")
   try {
     sendResult = await transporter.sendMail({
       from: `"${config.SENDER_NAME}" <${config.SENDER_EMAIL}>`,
@@ -982,6 +986,7 @@ async function noticeMaster (comment) {
   } catch (e) {
     sendResult = e
   }
+  console.timeEnd("发送博主邮件")
   console.log('博主通知结果：', sendResult)
   return sendResult
 }
@@ -1129,6 +1134,7 @@ async function noticeReply (currentComment) {
       </div>`
   }
   let sendResult
+  console.time("发送回复邮件")
   try {
     sendResult = await transporter.sendMail({
       from: `"${config.SENDER_NAME}" <${config.SENDER_EMAIL}>`,
@@ -1139,6 +1145,7 @@ async function noticeReply (currentComment) {
   } catch (e) {
     sendResult = e
   }
+  console.timeEnd("发送回复邮件")
   console.log('回复通知结果：', sendResult)
   return sendResult
 }
